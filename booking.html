@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Mechanic - Masai Automotive</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Masai Automotive</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="booking">
+    <h2>Book a Mechanic</h2>
+    <form id="bookingForm">
+      <label for="mechanic">Select Mechanic:</label>
+      <select id="mechanic" name="mechanic" required>
+        <option value="1">Mechanic 1</option>
+        <option value="2">Mechanic 2</option>
+      </select>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required>
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+  <footer>
+    <p>&copy; 2023 Masai Automotive</p>
+  </footer>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

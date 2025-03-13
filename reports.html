@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - Masai Automotive</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Masai Automotive</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="reports">
+    <h2>Generate Reports</h2>
+    <form id="reportForm">
+      <label for="reportType">Report Type:</label>
+      <select id="reportType" name="reportType" required>
+        <option value="sales">Sales Report</option>
+        <option value="users">User Activity Report</option>
+        <option value="mechanics">Mechanic Performance Report</option>
+      </select>
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required>
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" required>
+      <button type="submit">Generate Report</button>
+    </form>
+    <div id="reportOutput">
+      <!-- Report output will be dynamically populated here -->
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2023 Masai Automotive</p>
+  </footer>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

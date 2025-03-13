@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role Management - Masai Automotive</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Masai Automotive</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="logout.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="role-management">
+    <h2>Role Management</h2>
+    <div class="search-bar">
+      <input type="text" id="searchUser" placeholder="Search users by name or email..." oninput="searchUsers()">
+    </div>
+    <div class="user-list">
+      <!-- User cards will be dynamically populated here -->
+      <div class="user-card card">
+        <div class="user-info">
+          <img src="images/default-profile.png" alt="User Image" class="user-image">
+          <div class="user-details">
+            <h3>John Doe</h3>
+            <p>john@example.com</p>
+            <p><strong>Current Role:</strong> Car Owner</p>
+          </div>
+        </div>
+        <div class="role-actions">
+          <select class="role-select">
+            <option value="user">Car Owner</option>
+            <option value="mechanic">Mechanic</option>
+            <option value="seller">Spare Parts Seller</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button class="btn update-role">Update Role</button>
+        </div>
+      </div>
+      <!-- Repeat user cards dynamically -->
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2023 Masai Automotive</p>
+  </footer>
+  <script src="js/scripts.js"></script>
+  <script>
+    // JavaScript for dynamic search and role updates
+    function searchUsers() {
+      const searchQuery = document.getElementById('searchUser').value.toLowerCase();
+      const userCards = document.querySelectorAll('.user-card');
+
+      userCards.forEach(card => {
+        const userName = card.querySelector('h3').textContent.toLowerCase();
+        const userEmail = card.querySelector('p').textContent.toLowerCase();
+        if (userName.includes(searchQuery) || userEmail.includes(searchQuery)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Update role functionality
+    document.querySelectorAll('.update-role').forEach(button => {
+      button.addEventListener('click', () => {
+        const roleSelect = button.previousElementSibling;
+        const newRole = roleSelect.value;
+        const userCard = button.closest('.user-card');
+        const userName = userCard.querySelector('h3').textContent;
+
+        alert(`Updated ${userName}'s role to ${newRole}`);
+        // Send role update to the server (backend integration required)
+      });
+    });
+  </script>
+</body>
+</html>
