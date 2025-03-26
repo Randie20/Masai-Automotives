@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register to access Masai Automotive's platform for car owners, mechanics, and spare parts sellers.">
+  <title>Register - Masai Automotive</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Masai Automotive</div>
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
+      <ul class="nav-links">
+        <li><a href="login.html">Login</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="register-form">
+      <h2>Create Your Account</h2>
+      <p>Join Masai Automotive to connect with mechanics and spare parts sellers.</p>
+      <form id="registrationForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+        <label for="user-type">Account Type</label>
+        <select id="user-type" name="user-type" required>
+          <option value="" disabled selected>Select account type</option>
+          <option value="car-owner">Car Owner</option>
+          <option value="mechanic">Mechanic</option>
+          <option value="seller">Spare Parts Seller</option>
+        </select>
+
+        <button type="submit" class="btn">Register</button>
+      </form>
+      <p class="login-link">Already have an account? <a href="login.html">Login here</a>.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Masai Automotive. All rights reserved.</p>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+  <script>
+    // Form Validation
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+
+      alert('Registration successful!');
+      // Redirect to login page or dashboard
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

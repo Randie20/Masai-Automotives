@@ -1,5 +1,7 @@
-/* Global Styles */
-body {
+/* ============================
+   1. GLOBAL STYLES
+   ============================ */
+   body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -84,26 +86,17 @@ header ul li a:hover {
     }
 }
 
-.hero {
+footer {
     text-align: center;
-    padding: 6rem 2rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/car-bg.jpg') no-repeat center center/cover;
+    padding: 1rem;
+    background: #333;
     color: #fff;
-    animation: fadeIn 1.5s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    animation: slideIn 1s ease-in-out;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-    animation: slideIn 1.2s ease-in-out;
-}
-
+/* Global Button Styles */
 .btn {
     background: #ff5722;
     color: #fff;
@@ -118,16 +111,6 @@ header ul li a:hover {
 .btn:hover {
     background: #e64a19;
     transform: translateY(-3px);
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 /* Animations */
@@ -155,135 +138,81 @@ body.dark-mode footer {
     background-color: #1f1f1f;
 }
 
-/* Forms */
-form {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 2rem auto;
-    animation: fadeIn 1s ease-in-out;
-}
-
-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-form input,
-form select,
-form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-form button {
-    width: 100%;
-    padding: 0.8rem;
-    background: #ff5722;
+/* ============================
+   2. HOME PAGE (INDEX.HTML)
+   ============================ */
+.hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/car-bg.jpg') no-repeat center center/cover;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-form button:hover {
-    background: #e64a19;
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: slideIn 1s ease-in-out;
 }
 
-/* Cards */
-.card {
-    background: #fff;
-    padding: 1.5rem;
+.hero p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    animation: slideIn 1.2s ease-in-out;
+}
+
+/* Mechanic Cards */
+.mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.mechanic-card {
+    position: relative;
+    overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
     transition: transform 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Profile Picture Upload */
-#profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+.mechanic-card img {
+    width: 100%;
+    height: 200px;
     object-fit: cover;
-    border: 3px solid #ff5722;
-    margin-bottom: 1rem;
+    border-radius: 10px 10px 0 0;
 }
 
-#upload-pic {
-    background: #ff5722;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#upload-pic:hover {
-    background: #e64a19;
-}
-
-/* Carousel Styles */
-.carousel {
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
-.slide {
-    display: none;
-    padding: 2rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/car-bg.jpg') no-repeat center center/cover;
-    color: #fff;
-}
-
-.slide.active {
-    display: block;
-}
-
-.prev,
-.next {
+.mechanic-card .details {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    bottom: -60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
     color: #fff;
-    border: none;
     padding: 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    transition: background 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
 }
 
-.prev:hover,
-.next:hover {
-    background: rgba(0, 0, 0, 0.8);
+.mechanic-card:hover {
+    transform: scale(1.05);
 }
 
-.prev {
-    left: 1rem;
-}
-
-.next {
-    right: 1rem;
+.mechanic-card:hover .details {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Testimonial Slider */
+.testimonials {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+}
+
 .testimonial-slider {
     position: relative;
     text-align: center;
@@ -325,93 +254,293 @@ form button:hover {
 .next-testimonial {
     right: 1rem;
 }
-/* Role Management Page */
-.role-management {
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
     padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .search-bar {
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    position: relative;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-options {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* ============================
+   3. LOGIN PAGE (LOGIN.HTML)
+   ============================ */
+.login-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.login-form h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.login-form p {
+    font-size: 1rem;
     margin-bottom: 2rem;
-  }
-  
-  .search-bar input {
+    color: #666;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.login-form input {
     width: 100%;
     padding: 0.8rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-  }
-  
-  .user-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .user-card {
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.form-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.forgot-password-link {
+    color: #ff5722;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-password-link:hover {
+    color: #e64a19;
+}
+
+.register-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.register-link a {
+    color: #ff5722;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.register-link a:hover {
+    color: #e64a19;
+}
+
+/* ============================
+   4. REGISTER PAGE (REGISTER.HTML)
+   ============================ */
+.register-form {
     background: #fff;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-  }
-  
-  .user-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .user-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ff5722;
-  }
-  
-  .user-details h3 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  
-  .user-details p {
-    margin: 0.2rem 0;
+    max-width: 400px;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.register-form h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.register-form p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
     color: #666;
-  }
-  
-  .role-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .role-select {
-    padding: 0.5rem;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.register-form input,
+.register-form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-  }
-  
-  .update-role {
+}
+
+.register-form button {
+    width: 100%;
+    padding: 0.8rem;
     background: #ff5722;
     color: #fff;
-    padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  .update-role:hover {
+}
+
+.register-form button:hover {
     background: #e64a19;
-  }
+}
+
+.login-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.login-link a {
+    color: #ff5722;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.login-link a:hover {
+    color: #e64a19;
+}
+
+/* ============================
+   5. SETTINGS PAGE (SETTINGS.HTML)
+   ============================ */
+.settings-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.settings-form h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.settings-form p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.profile-pic-section img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #ff5722;
+}
+
+.profile-pic-section .btn {
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.settings-form button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settings-form button:hover {
+    background: #e64a19;
+}

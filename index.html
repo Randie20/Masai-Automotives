@@ -4,72 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Masai Automotive connects car owners, mechanics, and spare parts sellers.">
-  <meta name="keywords" content="car repair, mechanics, spare parts, automotive services">
-  <meta name="author" content="Masai Automotive">
   <title>Masai Automotive</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Header with Responsive Navigation -->
+  <!-- Header -->
   <header>
     <nav class="navbar">
       <div class="logo">Masai Automotive</div>
-      <img src="images/logo.png" alt="Masai Automotive Logo">
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
       <ul class="nav-links">
         <li><a href="login.html">Login</a></li>
-        <li><a href="register.html">Register</a></li>
+        <li><a href="registration.html">Register</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section with Carousel -->
+  <!-- Hero Section with Interactive Modal -->
   <main>
     <section class="hero">
-      <div class="carousel">
-        <div class="slide active">
-          <h1>Welcome to Masai Automotive</h1>
-          <p>Connecting car owners, mechanics, and spare parts sellers.</p>
-          <a href="search.html" class="btn">Find a Mechanic</a>
-          <a href="search.html" class="btn">Search Spare Parts</a>
-        </div>
-        <div class="slide">
-          <h1>Need a Trusted Mechanic?</h1>
-          <p>Find certified mechanics near you.</p>
-          <a href="search.html" class="btn">Find a Mechanic</a>
-        </div>
-        <div class="slide">
-          <h1>Looking for Spare Parts?</h1>
-          <p>Explore our wide range of auto parts.</p>
-          <a href="search.html" class="btn">Search Spare Parts</a>
+      <h1>Welcome to Masai Automotive</h1>
+      <p>Connecting car owners, mechanics, and spare parts sellers.</p>
+      <button class="btn" onclick="openModal()">Get Started</button>
+    </section>
+
+    <!-- Modal for Interactive Engagement -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>How Can We Help You?</h2>
+        <p>Select an option below to get started:</p>
+        <div class="modal-options">
+          <button class="btn" onclick="alert('Redirecting to Find a Mechanic...')">Find a Mechanic</button>
+          <button class="btn" onclick="alert('Redirecting to Search Spare Parts...')">Search Spare Parts</button>
         </div>
       </div>
-      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-      <button class="next" onclick="changeSlide(1)">&#10095;</button>
-    </section>
+    </div>
 
     <!-- Featured Mechanics Section -->
     <section class="featured-mechanics">
       <h2>Featured Mechanics</h2>
       <div class="mechanics-grid">
-        <div class="mechanic-card">
+        <div class="mechanic-card" onmouseover="showDetails(this)" onmouseout="hideDetails(this)">
           <img src="images/mechanic1.jpg" alt="Mechanic 1">
-          <h3>John Doe</h3>
-          <p>Expert in Engine Repairs</p>
+          <div class="details">
+            <h3>John Doe</h3>
+            <p>Expert in Engine Repairs</p>
+          </div>
         </div>
-        <div class="mechanic-card">
+        <div class="mechanic-card" onmouseover="showDetails(this)" onmouseout="hideDetails(this)">
           <img src="images/mechanic2.jpg" alt="Mechanic 2">
-          <h3>Jane Smith</h3>
-          <p>Specializes in Electrical Systems</p>
+          <div class="details">
+            <h3>Jane S.</h3>
+            <p>Specializes in Electrical Systems</p>
+          </div>
         </div>
-        <div class="mechanic-card">
+        <div class="mechanic-card" onmouseover="showDetails(this)" onmouseout="hideDetails(this)">
           <img src="images/mechanic3.jpg" alt="Mechanic 3">
-          <h3>Mike Johnson</h3>
-          <p>Tire and Suspension Specialist</p>
+          <div class="details">
+            <h3>Mike Johnson</h3>
+            <p>Tire and Suspension Specialist</p>
+          </div>
         </div>
       </div>
     </section>
@@ -97,20 +96,31 @@
     <p>&copy; 2023 Masai Automotive. All rights reserved.</p>
   </footer>
 
-  <script src="js/scripts.js"></script>
   <script>
-    // Carousel Functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel .slide');
-    function changeSlide(direction) {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
+    // Modal Functions
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // Mechanic Card Hover Effects
+    function showDetails(card) {
+      card.querySelector('.details').style.opacity = '1';
+      card.querySelector('.details').style.transform = 'translateY(0)';
+    }
+
+    function hideDetails(card) {
+      card.querySelector('.details').style.opacity = '0';
+      card.querySelector('.details').style.transform = 'translateY(20px)';
     }
 
     // Testimonial Slider
     let currentTestimonial = 0;
     const testimonials = document.querySelectorAll('.testimonial-slider .testimonial');
+
     function changeTestimonial(direction) {
       testimonials[currentTestimonial].classList.remove('active');
       currentTestimonial = (currentTestimonial + direction + testimonials.length) % testimonials.length;
